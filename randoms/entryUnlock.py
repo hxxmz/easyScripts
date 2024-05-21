@@ -11,7 +11,7 @@ def clear():
 
 def querySelector(qMode,itemCollection):
     whereParam = f"IN {itemCollection}"
-    if len(itemCollection)==1: whereParam = f"= {itemCollection[0]}"
+    if len(itemCollection)==1: whereParam = f"= \'{itemCollection[0]}\'"
     Queries = {
         "i": f"SELECT * FROM Invoice WHERE InVNumber {whereParam};\nUPDATE Invoice SET IsPosted = 0, IsApproved = 0 WHERE InVNumber {whereParam};",
         "g": f"SELECT * FROM MarketingGatePass WHERE SerialNo {whereParam};\nUPDATE MarketingGatePass SET IsApproved = 0 WHERE SerialNo {whereParam};"
