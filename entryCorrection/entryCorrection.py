@@ -42,6 +42,23 @@ def tuplify():
     print(str(result))
     return False
 
+def tuplifyMultiLine(): 
+    print("Paste your input. To end the input, press Enter on an empty line.")
+    # Read multiline input
+    lines = []
+    while True:
+        try:
+            line = input()
+            if line.strip() == "":
+                break
+            lines.append(line.strip())
+        except EOFError:
+            break
+    # Create a tuple from the list of strings
+    result = tuple(lines)
+    pyperclip.copy(str(result)) ; print(str(result))  
+    return False
+
 def query(q):
     print()
     query = {
@@ -55,7 +72,7 @@ def main():
     exit = False ; loop = False
     while not exit:
         if not loop:
-            loop = tuplify()
+            loop = tuplifyMultiLine()
         response = input("\n1. Press enter to exit\n2. 'c'/'cls' to clear screen\n3. 'r'/'re' to restart\n4.'sel'/'des' for query\n\n>>> ")
         match response:
             case ""  | ".":
