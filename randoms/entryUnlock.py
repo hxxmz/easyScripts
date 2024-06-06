@@ -14,7 +14,8 @@ def querySelector(qMode,itemCollection):
     if len(itemCollection)==1: whereParam = f"= \'{itemCollection[0]}\'"
     Queries = {
         "i": f"SELECT * FROM Invoice WHERE InVNumber {whereParam};\nUPDATE Invoice SET IsPosted = 0, IsApproved = 0 WHERE InVNumber {whereParam};",
-        "g": f"SELECT * FROM MarketingGatePass WHERE SerialNo {whereParam};\nUPDATE MarketingGatePass SET IsApproved = 0 WHERE SerialNo {whereParam};"
+        "g": f"SELECT * FROM MarketingGatePass WHERE SerialNo {whereParam};\nUPDATE MarketingGatePass SET IsApproved = 0 WHERE SerialNo {whereParam};",
+        "d": f"SELECT * FROM RNDMaster WHERE DocNo {whereParam};\nUPDATE RNDMaster SET [Status] = 'Open' WHERE DocNo {whereParam};"
     }
     return Queries[qMode]
 
@@ -24,7 +25,7 @@ def generator():
         mode = input("Mode: ")
         if mode == "":
             return False
-        if mode in ("g", "i"):
+        if mode in ("g", "i", "d"):
             clear = True
     items = tuple(input("Items: ").split(" "))
     result = querySelector(mode, items)
