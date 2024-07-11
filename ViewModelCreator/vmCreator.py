@@ -9,7 +9,7 @@ def clear():
     else:
         _ = system('clear')
 
-def factory():
+def factory(): # returns all string
     print("Paste your input. To end the input, press Enter on an empty line.")
     lines = []
     while True:
@@ -17,19 +17,33 @@ def factory():
             line = input()
             if line.strip() == "":
                 break
-            lines.append("public string "+str(line.strip()).replace('\'',"")+" { get; set; }") # public string Name { get; set; }
+            lines.append("public string "+str(line.strip())+" { get; set; }") # public string /Name/ { get; set; }
         except EOFError:
             break
     result = "\n".join(lines)
-    #pyperclip.copy(str(result)) ; 
-    print(result)  
+    pyperclip.copy(result) ; print(result)  
+    return False
+
+def generator(): # returns datatype as mentioned
+    print("Paste your input. To end the input, press Enter on an empty line.")
+    lines = []
+    while True:
+        try:
+            line = input()
+            if line.strip() == "":
+                break
+            lines.append("public "+str(line.strip().split()[1])+" "+str(line.strip().split()[0])+" { get; set; }") # public /type/ /Name/ { get; set; }
+        except EOFError:
+            break
+    result = "\n".join(lines)
+    pyperclip.copy(result) ; print(result)  
     return False
 
 def main():
     exit = False ; loop = False
     while not exit:
         if not loop:
-            loop = factory()
+            loop = generator()
         response = input("\n1. Press enter to exit\n2. 'c'/'cls' to clear screen\n3. 'r'/'re' to restart\n\n>>> ")
         match response:
             case ""  | ".":
