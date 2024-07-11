@@ -44,7 +44,6 @@ def tuplify():
 
 def tuplifyMultiLine(): 
     print("Paste your input. To end the input, press Enter on an empty line.")
-    # Read multiline input
     lines = []
     while True:
         try:
@@ -54,7 +53,6 @@ def tuplifyMultiLine():
             lines.append(line.strip())
         except EOFError:
             break
-    # Create a tuple from the list of strings
     result = tuple(lines)
     pyperclip.copy(str(result)) ; print(str(result))  
     return False
