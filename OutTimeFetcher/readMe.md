@@ -1,19 +1,24 @@
 # fetchOut.py
 
 ## Overview
-`fetchOut.py` is a Python script that connects to a Microsoft SQL Server database, executes the stored procedure `sp_x_out`, and exports the results into both CSV and Excel (XLSX) formats.
+`fetchOut.py` is a Python script that connects to a Microsoft SQL Server database, executes the stored procedure `sp_x_out` (with optional `@CardNo` parameter), and exports the results into both CSV and Excel (XLSX) formats.  
 
-This is **v1.0.0**, the initial release.
+This is **v1.2.0**, the enhanced release.  
 
 ---
 
 ## Features
-- Connects to SQL Server using pyodbc
-- Executes the stored procedure: `sp_x_out`
-- Fetches all rows and columns returned by the stored procedure
+- Connects to SQL Server using pyodbc  
+- Executes the stored procedure: `sp_x_out`  
+- Supports optional parameter: `@CardNo`  
+- Fetches all rows and columns returned by the stored procedure  
+- Creates a `results/` folder automatically  
 - Exports results to:
-  - `sp_x_out_results.csv`
-  - `sp_x_out_results.xlsx`
+  - `results/results_<timestamp>.csv`
+  - `results/results_<timestamp>.xlsx`
+  - If `@CardNo` provided:  
+    - `results/results_<CardNo>_<timestamp>.csv`
+    - `results/results_<CardNo>_<timestamp>.xlsx`
 
 ---
 
@@ -25,7 +30,8 @@ This is **v1.0.0**, the initial release.
   - openpyxl (for Excel export)
 
 Install dependencies with:
-```
+
+```bash
 pip install pyodbc pandas openpyxl
 ```
 
@@ -48,13 +54,24 @@ conn_str = (
 ```
 python fetchOut.py
 ```
-4. Results will be saved in the same folder as:
-   - `sp_x_out_results.csv`
-   - `sp_x_out_results.xlsx`
+Without parameter (fetch all):
+```
+python fetchOut.py
+```
+With parameter (@CardNo, e.g., 12345):
+```
+python fetchOut.py 12345
+```
+4. Results will be saved in the `results/` folder with timestamped filenames.
 
 ---
 
 ## Versioning
+
+### v1.1.0 (2025-09-02)
+- Added support for optional `@CardNo` parameter
+- Results saved in a dedicated `results/` folder
+- Filenames now include `timestamps` and `CardNo` (if provided)
 
 ### v1.0.0 (2025-09-02)
 - Initial version
