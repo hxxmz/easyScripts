@@ -6,6 +6,13 @@
  Author      : Hamza
 
  Change Log:
+ - v1.2.0 (2025-09-02):
+   • Added optional @CardNo parameter.
+   • Added file_type option to export CSV, XLSX, or both.
+   • Default CardNo to 0 if invalid input.
+   • Results stored in 'results/' folder.
+   • Filenames include timestamp and CardNo (if provided).
+
  - v1.1.0 (2025-09-02):
    • Added optional @CardNo parameter support.
    • Auto-creates a 'results' folder for exports.
@@ -17,14 +24,13 @@
    • Basic CSV/XLSX export without parameter handling.
 ============================================================
 """
-
 import sys
 import os
 import pyodbc
 import pandas as pd
 from datetime import datetime
 
-def run_stored_proc(card_no=None):
+def run_stored_proc(card_no=None, file_type="both"):
     # Connection string
     conn_str = (
         "Driver={ODBC Driver 17 for SQL Server};"
@@ -40,6 +46,10 @@ def run_stored_proc(card_no=None):
         cursor = conn.cursor()
 
         if card_no:
+            if not str(card_no).isdigit():
+                print(f"⚠ Invalid CardNo '{card_no}', defaulting to 0")
+                card_no = 0
+
             print(f"▶ Running: EXEC sp_x_out @CardNo = {card_no}")
             cursor.execute("EXEC sp_x_out @CardNo = ?", (card_no,))
         else:
@@ -61,16 +71,16 @@ def run_stored_proc(card_no=None):
         else:
             base_name = f"results_{timestamp}"
 
-        csv_file = os.path.join(results_dir, base_name + ".csv")
-        xlsx_file = os.path.join(results_dir, base_name + ".xlsx")
+        # Export according to file_type
+        if file_type.lower() in ("c", "csv", "both", "b"):
+            csv_file = os.path.join(results_dir, base_name + ".csv")
+            df.to_csv(csv_file, index=False)
+            print(f"✅ CSV exported: {csv_file}")
 
-        # Export results
-        df.to_csv(csv_file, index=False)
-        df.to_excel(xlsx_file, index=False)
-
-        print(f"✅ Data exported:")
-        print(f"   - {csv_file}")
-        print(f"   - {xlsx_file}")
+        if file_type.lower() in ("x", "xlsx", "both", "b"):
+            xlsx_file = os.path.join(results_dir, base_name + ".xlsx")
+            df.to_excel(xlsx_file, index=False)
+            print(f"✅ Excel exported: {xlsx_file}")
 
         cursor.close()
         conn.close()
@@ -79,7 +89,13 @@ def run_stored_proc(card_no=None):
 
 
 if __name__ == "__main__":
+    card_no = None
+    file_type = "both"
+
     if len(sys.argv) > 1:
-        run_stored_proc(sys.argv[1])
-    else:
-        run_stored_proc()
+        if sys.argv[1].strip() != "":
+            card_no = sys.argv[1]
+    if len(sys.argv) > 2:
+        file_type = sys.argv[2]
+
+    run_stored_proc(card_no, file_type)

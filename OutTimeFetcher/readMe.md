@@ -1,9 +1,9 @@
 # fetchOut.py
 
 ## Overview
-`fetchOut.py` is a Python script that connects to a Microsoft SQL Server database, executes the stored procedure `sp_x_out` (with optional `@CardNo` parameter), and exports the results into both CSV and Excel (XLSX) formats.  
+`fetchOut.py` is a Python script that connects to a Microsoft SQL Server database, executes the stored procedure `sp_x_out` (with optional `@CardNo` parameter), and exports the results into CSV, Excel (XLSX), or both formats. 
 
-This is **v1.2.0**, the enhanced release.  
+This is **v1.2.0**, the latest release.  
 
 ---
 
@@ -11,14 +11,18 @@ This is **v1.2.0**, the enhanced release.
 - Connects to SQL Server using pyodbc  
 - Executes the stored procedure: `sp_x_out`  
 - Supports optional parameter: `@CardNo`  
+- Default CardNo to 0 if invalid input is provided
+- Optional file_type parameter to export CSV, XLSX, or both
 - Fetches all rows and columns returned by the stored procedure  
 - Creates a `results/` folder automatically  
+- Filenames include timestamp and CardNo (if provided)
 - Exports results to:
-  - `results/results_<timestamp>.csv`
-  - `results/results_<timestamp>.xlsx`
   - If `@CardNo` provided:  
     - `results/results_<CardNo>_<timestamp>.csv`
     - `results/results_<CardNo>_<timestamp>.xlsx`
+  - Otherwise:
+    - `results/results_<timestamp>.csv`
+    - `results/results_<timestamp>.xlsx`
 
 ---
 
@@ -54,19 +58,32 @@ conn_str = (
 ```
 python fetchOut.py
 ```
-Without parameter (fetch all):
+Without parameter (fetch all, both CSV & XLSX):
 ```
 python fetchOut.py
 ```
-With parameter (@CardNo, e.g., 12345):
+With parameter (@CardNo, e.g., 12345) and default export (both):
 ```
 python fetchOut.py 12345
+```
+Specify file type (c or csv = CSV, x or xlsx = XLSX, b or both = both):
+```
+python fetchOut.py 12345 c
+python fetchOut.py 12345 x
+python fetchOut.py 12345 b
 ```
 4. Results will be saved in the `results/` folder with timestamped filenames.
 
 ---
 
 ## Versioning
+
+### v1.2.0 (2025-09-02)
+- Optional @CardNo parameter
+- Optional file_type parameter for CSV/XLSX/both
+- Default invalid CardNo to 0
+- Results saved in results/ folder
+- Timestamped filenames
 
 ### v1.1.0 (2025-09-02)
 - Added support for optional `@CardNo` parameter
