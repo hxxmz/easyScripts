@@ -3,7 +3,7 @@
 ## Overview
 `fetchOut.py` is a Python script that connects to a Microsoft SQL Server database, executes the stored procedure `sp_x_out` (with optional `@CardNo` parameter), and exports the results into CSV, Excel (XLSX), or both formats. 
 
-This is **v1.2.0**, the latest release.  
+This is **v1.3.0**, the latest release.  
 
 ---
 
@@ -23,6 +23,8 @@ This is **v1.2.0**, the latest release.
   - Otherwise:
     - `results/results_<timestamp>.csv`
     - `results/results_<timestamp>.xlsx`
+- Uses .env file to store database credentials securely
+- Startup validation for missing .env variables
 
 ---
 
@@ -32,11 +34,25 @@ This is **v1.2.0**, the latest release.
   - pyodbc
   - pandas
   - openpyxl (for Excel export)
+  - python-dotenv (for environment variables)
 
 Install dependencies with:
 
 ```bash
-pip install pyodbc pandas openpyxl
+pip install pyodbc pandas openpyxl python-dotenv
+```
+
+---
+
+## Setup
+1. Create a `.env` file in the same folder as `fetchOut.py`:
+```
+DB_DRIVER=ODBC Driver 17 for SQL Server
+DB_SERVER=244.178.44.111
+DB_DATABASE=Live
+DB_UID=sa
+DB_PWD=P@ssw0rd
+DB_TIMEOUT=600
 ```
 
 ---
@@ -77,6 +93,13 @@ python fetchOut.py 12345 b
 ---
 
 ## Versioning
+
+### v1.3.0 (2025-09-15)
+- Moved database credentials to .env file
+- Added .gitignore to exclude .env from version control
+- Added support for python-dotenv to load environment variables
+- Added startup validation for missing .env variables
+- Removed hardcoded credentials from code
 
 ### v1.2.0 (2025-09-02)
 - Optional @CardNo parameter
