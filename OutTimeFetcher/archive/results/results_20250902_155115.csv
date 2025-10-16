@@ -1,0 +1,9 @@
+CardNo,EmployeeName,ShiftDate,Shift,StatusIN,StatusOut,IN,OUT,ValidOut,WorkHr,TotalEarlyMinutes,Diff
+7149,Muhammad Umar,2025-09-02,M4,,,,,,,0,0
+8615,Shariq Ahmed,2025-09-02,G5,,,09:10,,16:55,,0,0
+10576,Muhammad Hamza,2025-09-02,G5,,,08:59,,16:44,,0,0
+10928,Aliyan Ahmed,2025-09-02,G5,,,09:03,,16:48,,0,0
+7149,Muhammad Umar,2025-09-01,M4,On Time,On Time,09:28,16:50,16:43,07:22,0,7
+8615,Shariq Ahmed,2025-09-01,G5,On Time,On Time,09:10,17:05,16:55,07:55,0,10
+10576,Muhammad Hamza,2025-09-01,G5,On Time,On Time,09:00,16:50,16:45,07:50,0,5
+10928,Aliyan Ahmed,2025-09-01,G5,On Time,On Time,09:04,17:15,16:49,08:11,0,26
