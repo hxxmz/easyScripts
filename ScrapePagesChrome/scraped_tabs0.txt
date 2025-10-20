@@ -1,0 +1,90 @@
+name: 6 Things You Need to Know About Computers! - YouTube
+url: https://www.youtube.com/watch?v=p86QAKTSalE
+
+========================================
+
+name: A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate - YouTube
+url: https://www.youtube.com/watch?v=Tud9HLTk8hg
+
+========================================
+
+name: AI Learns to Fight (deep reinforcement learning) - YouTube
+url: https://www.youtube.com/watch?v=Xk2gwh0qG5s
+
+========================================
+
+name: AI's first kill and why top experts predict our extinction - YouTube
+url: https://www.youtube.com/watch?v=BcQb_8hmxSI
+
+========================================
+
+name: Asynchronous Processing: The Secret to Apps That Never Freeze! - YouTube
+url: https://www.youtube.com/watch?v=krkMtz6wo9E
+
+========================================
+
+name: How I Structure AI Research In My Lab - YouTube
+url: https://www.youtube.com/watch?v=4qmo28ww0bA
+
+========================================
+
+name: Is it still worth learning to code? - YouTube
+url: https://www.youtube.com/watch?v=elg7eKegv0o
+
+========================================
+
+name: Just Write an HTTP Server?? #programming #coding #lowcode - YouTube
+url: https://www.youtube.com/shorts/5JN7SZ6NETQ
+
+========================================
+
+name: n8n Now Runs My ENTIRE Homelab - YouTube
+url: https://www.youtube.com/watch?v=budTmdQfXYU
+
+========================================
+
+name: n8n's NEW Native Data Tables Just Made Building Agents So Much Easier - YouTube
+url: https://www.youtube.com/watch?v=QCjMBOEhpLE
+
+========================================
+
+name: Oracle is Genuinely Far Scarier Than Blackrock - YouTube
+url: https://www.youtube.com/watch?v=V64TdrkhTqo
+
+========================================
+
+name: Putin’s Great Naval Problem – Sarah Paine - YouTube
+url: https://www.youtube.com/shorts/dmxub4YjcEA
+
+========================================
+
+name: Tensors Explained in 60 Seconds! - YouTube
+url: https://www.youtube.com/shorts/VeEaZC4VCIE
+
+========================================
+
+name: The Modern Job Hunt: Part 1 - The Daily WTF
+url: https://thedailywtf.com/articles/the-modern-job-hunt-part-1
+
+========================================
+
+name: The Security Problem with MCP | Identity, RBAC & Audit - YouTube
+url: https://www.youtube.com/watch?v=x4XjSRUSRrg
+
+========================================
+
+name: What happens if AI just keeps getting smarter? - YouTube
+url: https://www.youtube.com/watch?v=0bnxF9YfyFI
+
+========================================
+
+name: Why AI Helps Seniors but Trips Up Juniors | Data Science Collective
+url: https://medium.com/data-science-collective/i-watched-ai-make-a-senior-engineer-cry-last-week-heres-w…
+
+========================================
+
+name: Why Leetcode doesn’t work - YouTube
+url: https://www.youtube.com/shorts/afZe8eNqEQc
+
+========================================
+
